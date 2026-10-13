@@ -18,3 +18,6 @@ AREA JURIDICA ENCAPSULADA
 - A pagina inclui meta robots noindex,nofollow,noarchive,nosnippet.
 - Em producao, a URL prevista e: https://linksalute.com.br/legal/termos-de-uso/
 - Recomenda-se revisao juridica final antes de informar a URL nas lojas Apple/Google.
+
+
+V21: imagens Hero e Telemedicina com feather alfa real nas bordas; removidos brilhos/fundos artificiais dos containers para integração natural com a página.
