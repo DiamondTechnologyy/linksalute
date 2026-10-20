@@ -18,8 +18,10 @@
 
   const phone=document.querySelector('input[name="whatsapp"]');
   if(phone)phone.addEventListener('input',e=>{const d=e.target.value.replace(/\D/g,'').slice(0,11);e.target.value=d.length<=2?`(${d}`:d.length<=7?`(${d.slice(0,2)}) ${d.slice(2)}`:`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;});
-  const wa=document.getElementById('whatsapp-float');
-  if(wa){const raw=(cfg.whatsappNumber||'').replace(/\D/g,'');if(raw){wa.href=`https://wa.me/${raw}?text=${encodeURIComponent('Olá! Gostaria de falar com a LinkSalute.')}`;wa.target='_blank';wa.rel='noopener noreferrer';}else{wa.href='#';wa.addEventListener('click',e=>{e.preventDefault();alert('Configure o número do WhatsApp em assets/js/config.js.');});}}
+  const rawWhatsApp=(cfg.whatsappNumber||'').replace(/\D/g,'');
+  function configureWhatsAppLink(el,message){if(!el)return;if(rawWhatsApp){el.href=`https://wa.me/${rawWhatsApp}?text=${encodeURIComponent(message)}`;el.target='_blank';el.rel='noopener noreferrer';}else{el.href='#';el.addEventListener('click',e=>{e.preventDefault();alert('Configure o número do WhatsApp em assets/js/config.js.');});}}
+  configureWhatsAppLink(document.getElementById('whatsapp-float'),'Olá! Gostaria de falar com a LinkSalute.');
+  document.querySelectorAll('[data-whatsapp-message]').forEach(el=>configureWhatsAppLink(el,el.dataset.whatsappMessage||'Olá! Gostaria de falar com a LinkSalute.'));
   const form=document.getElementById('partner-form');
   if(form){form.addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('form-status');if(!form.reportValidity())return;if(!cfg.formEndpoint){status.textContent='Formulário pronto para integração. Configure o endpoint em assets/js/config.js.';return;}const btn=form.querySelector('button[type="submit"]');try{btn.disabled=true;status.textContent='Enviando...';const r=await fetch(cfg.formEndpoint,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});if(!r.ok)throw new Error();location.href=cfg.successUrl||'obrigado.html';}catch(_){status.textContent='Não foi possível enviar agora. Tente novamente em instantes.';}finally{btn.disabled=false;}});}
 })();

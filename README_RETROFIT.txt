@@ -21,3 +21,11 @@ AREA JURIDICA ENCAPSULADA
 
 
 V21: imagens Hero e Telemedicina com feather alfa real nas bordas; removidos brilhos/fundos artificiais dos containers para integração natural com a página.
+
+
+V22 — Atualizações
+- Favicon arredondado aplicado às páginas principais e legais.
+- Novo item de menu e seção premium Pets para cães e gatos.
+- CTA de Pets integrado ao WhatsApp.
+- Inclusão do diferencial comercial para filhos menores como dependentes sem licença individual adicional.
+- Ajustes responsivos para a nova seção.
